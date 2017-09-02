@@ -34,9 +34,9 @@ export function activate(context: ExtensionContext) {
 	}
 
 	// Create the language client and start the client.
-	let disposable = new LanguageClient('checkstyle', 'Checkstyle', serverOptions, clientOptions).start();
+	let client = new LanguageClient('checkstyle', 'Checkstyle', serverOptions, clientOptions);
 
 	// Push the disposable to the context's subscriptions so that the
 	// client can be deactivated on extension deactivation
-	context.subscriptions.push(disposable);
+	context.subscriptions.push(new SettingMonitor(client, 'checkstyle.enable').start());
 }

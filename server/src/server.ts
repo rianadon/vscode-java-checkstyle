@@ -42,8 +42,9 @@ interface Settings {
 
 // These are the checkstyle settings we defined in the client's package.json file
 interface CheckstyleSettings {
-	checkstylePath: string|null;
-	configurationPath: string|null;
+	enable?: boolean;
+	checkstylePath?: string;
+	configurationPath?: string;
 }
 
 // hold the maxNumberOfProblems setting

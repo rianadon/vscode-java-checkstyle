@@ -20,6 +20,11 @@
       "type": "object",
       "title": "checkstyle",
       "properties": {
+        "checkstyle.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Controls whether checkstyle is enabled or not."
+        },
         "checkstyle.checkstylePath": {
           "type": "string",
           "default": "checkstyle",
