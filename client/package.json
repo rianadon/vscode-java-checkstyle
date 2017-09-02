@@ -31,7 +31,10 @@
           "description": "The path to the checkstyle executable. If a jar is provided instead the path will be examined for Java."
         },
         "checkstyle.configurationPath": {
-          "type": ["string", "null"],
+          "type": [
+            "string",
+            "null"
+          ],
           "default": null,
           "description": "The path to the configuration file to use for checkstyle. This can be null."
         },
