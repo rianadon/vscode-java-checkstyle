@@ -1,69 +1,69 @@
 {
-  "name": "vscode-java-checkstyle",
-  "displayName": "Checkstyle",
-  "description": "VSCode linter using checkstyle",
-  "license": "MIT",
-  "version": "0.0.1",
-  "publisher": "rianadon",
-  "engines": {
-    "vscode": "^1.8.0"
-  },
-  "categories": [
-    "Linters"
-  ],
-  "activationEvents": [
-    "onLanguage:java"
-  ],
-  "main": "./out/src/extension",
-  "contributes": {
-    "configuration": {
-      "type": "object",
-      "title": "checkstyle",
-      "properties": {
-        "checkstyle.enable": {
-          "type": "boolean",
-          "default": true,
-          "description": "Controls whether checkstyle is enabled or not."
-        },
-        "checkstyle.checkstylePath": {
-          "type": "string",
-          "default": "checkstyle",
-          "description": "The path to the checkstyle executable. If a jar is provided instead the path will be examined for Java."
-        },
-        "checkstyle.configurationPath": {
-          "type": [
-            "string",
-            "null"
-          ],
-          "default": null,
-          "description": "The path to the configuration file to use for checkstyle. This can be null."
-        },
-        "checkstyle.trace.server": {
-          "type": "string",
-          "enum": [
-            "off",
-            "messages",
-            "verbose"
-          ],
-          "default": "off",
-          "description": "Traces the communication between VSCode and the languageServerExample service."
+    "name": "vscode-java-checkstyle",
+    "displayName": "Checkstyle",
+    "description": "VSCode linter using checkstyle",
+    "license": "MIT",
+    "version": "0.0.2",
+    "publisher": "rianadon",
+    "engines": {
+        "vscode": "^1.8.0"
+    },
+    "categories": [
+        "Linters"
+    ],
+    "activationEvents": [
+        "onLanguage:java"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "checkstyle",
+            "properties": {
+                "checkstyle.enable": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Controls whether checkstyle is enabled or not."
+                },
+                "checkstyle.checkstylePath": {
+                    "type": "string",
+                    "default": "checkstyle",
+                    "description": "The path to the checkstyle executable. If a jar is provided instead the path will be examined for Java."
+                },
+                "checkstyle.configurationPath": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "default": null,
+                    "description": "The path to the configuration file to use for checkstyle. This can be null."
+                },
+                "checkstyle.trace.server": {
+                    "type": "string",
+                    "enum": [
+                        "off",
+                        "messages",
+                        "verbose"
+                    ],
+                    "default": "off",
+                    "description": "Traces the communication between VSCode and the languageServerExample service."
+                }
+            }
         }
-      }
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "update-vscode": "node ./node_modules/vscode/bin/install",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "@types/mocha": "^2.2.33",
+        "@types/node": "^6.0.52",
+        "typescript": "^2.1.5",
+        "vscode": "^1.0.3"
+    },
+    "dependencies": {
+        "vscode-languageclient": "^3.1.0"
     }
-  },
-  "scripts": {
-    "vscode:prepublish": "tsc -p ./",
-    "compile": "tsc -watch -p ./",
-    "update-vscode": "node ./node_modules/vscode/bin/install",
-    "postinstall": "node ./node_modules/vscode/bin/install"
-  },
-  "devDependencies": {
-    "@types/mocha": "^2.2.33",
-    "@types/node": "^6.0.52",
-    "typescript": "^2.1.5",
-    "vscode": "^1.0.3"
-  },
-  "dependencies": {
-    "vscode-languageclient": "^3.1.0"
-  }
 }

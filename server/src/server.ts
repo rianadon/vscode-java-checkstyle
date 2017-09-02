@@ -133,6 +133,9 @@ async function validateDocument(uri: string): Promise<void> {
 	}
 }
 
+// Don't suggest any completion items
+connection.onCompletion(() => []);
+
 /*
 connection.onDidChangeWatchedFiles((change) => {
 	// Monitored files have change in VSCode
