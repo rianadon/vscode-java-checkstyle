@@ -12,6 +12,15 @@ A linter for Java code that uses [checkstyle], based on the [package for Atom][l
 
 * `checkstyle.configurationPath`: The path to the checkstyle configuration file. Setting this to `null` is the equivalent of not passing the `-c` option to checkstyle.
 
+## Acknowledgements
+
+Thank you to the projects that served both as inspiration and as a basis for this extension:
+
+* [checkstyle], the sole reason why this extension exists
+* [linter-checkstyle], for sorting out how to parse checkstyle's output
+* [vscode-eslint], for showing how a good VSCode linter is designed
+* [vscode-languageserver-node-example], without which I would have been completely lost
+
 [checkstyle]: http://checkstyle.sourceforge.net/
 [linter-checkstyle]: https://github.com/SebastianSzturo/linter-checkstyle
 [checkstyle from homebrew]: http://brewformulas.org/Checkstyle
