@@ -3,7 +3,7 @@
     "displayName": "Checkstyle",
     "description": "VSCode linter using checkstyle",
     "license": "MIT",
-    "version": "0.0.3",
+    "version": "0.1.0",
     "publisher": "rianadon",
     "engines": {
         "vscode": "^1.8.0"
@@ -14,6 +14,11 @@
     "activationEvents": [
         "onLanguage:java"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/rianadon/vscode-java-checkstyle"
+    },
+    "icon": "images/icon.png",
     "main": "./out/src/extension",
     "contributes": {
         "configuration": {
