@@ -3,7 +3,7 @@
     "displayName": "Checkstyle",
     "description": "VSCode linter using checkstyle",
     "license": "MIT",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "publisher": "rianadon",
     "engines": {
         "vscode": "^1.8.0"
