@@ -60,7 +60,7 @@ connection.onDidChangeConfiguration((change) => {
 });
 
 function parseOutput(output: string): Diagnostic[] {
-	let regex = /^(.*\.java):(\d+)(?::([\w \-]+))?: (warning:|)(.+)/
+	let regex = /^(?:\[[A-Z]*?\] )?(.*\.java):(\d+)(?::([\w \-]+))?: (warning:|)(.+)/
 	let diagnostics: Diagnostic[] = []
 
     // Split into lines
@@ -75,7 +75,7 @@ function parseOutput(output: string): Diagnostic[] {
 				severity: DiagnosticSeverity.Warning,
 				range: {
 					start: { line: Number(lineNum)-1, character: Number(colNum)},
-					end: { line: Number(lineNum)-1, character: Number(colNum) }
+					end: { line: Number(lineNum)-1, character: Number(colNum || Number.MAX_VALUE) }
 				},
 				message: mess,
 				source: 'checkstyle'
