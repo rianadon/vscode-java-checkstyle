@@ -56,7 +56,7 @@ let properties: object|null;
 // The settings have changed. Is send on server activation as well.
 connection.onDidChangeConfiguration((change) => {
 	let settings = <Settings>change.settings;
-	checkstylePath = setvvntings.checkstyle.checkstylePath || "checkstyle";
+	checkstylePath = settings.checkstyle.checkstylePath || "checkstyle";
 	configurationPath = settings.checkstyle.configurationPath || null;
 	properties = settings.checkstyle.properties || null;
 	// Revalidate any open text documents
