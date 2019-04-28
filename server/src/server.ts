@@ -45,16 +45,20 @@ interface CheckstyleSettings {
 	enable?: boolean;
 	checkstylePath?: string;
 	configurationPath?: string;
+	properties?: object
 }
 
 // hold the maxNumberOfProblems setting
 let checkstylePath: string;
 let configurationPath: string|null;
+let properties: object|null;
+
 // The settings have changed. Is send on server activation as well.
 connection.onDidChangeConfiguration((change) => {
 	let settings = <Settings>change.settings;
 	checkstylePath = settings.checkstyle.checkstylePath || "checkstyle";
 	configurationPath = settings.checkstyle.configurationPath || null;
+	properties = settings.checkstyle.properties || null;
 	// Revalidate any open text documents
 	documents.all().forEach(doc => validateDocument(doc.uri));
 });
@@ -103,10 +107,16 @@ function getCmdAndArgs(extraArgs: string[]): [string, string[]] {
  * @param file	The file to lint via checkstyle
  */
 function getCheckstyleArguments(file: string): string[] {
+	let systemProperties: string[] = []
+
+	if (properties) {
+		systemProperties = Object.keys(properties).map(key => `-D${key}=${properties[key]}`);
+	}
+
 	if (configurationPath) {
-		return ['-c', configurationPath, file];
+		return systemProperties.concat(['-c', configurationPath, file]);
 	} else {
-		return [file];
+		return systemProperties.concat([file]);
 	}
 }
 
