@@ -12,7 +12,8 @@
         "Linters"
     ],
     "activationEvents": [
-        "onLanguage:java"
+        "onLanguage:java",
+        "onLanguage:apex"
     ],
     "repository": {
         "type": "git",

@@ -64,7 +64,7 @@ connection.onDidChangeConfiguration((change) => {
 });
 
 function parseOutput(output: string): Diagnostic[] {
-	let regex = /^(?:\[[A-Z]*?\] )?(.*\.java):(\d+)(?::([\w \-]+))?: (warning:|)(.+)/
+	let regex = /^(?:\[[A-Z]*?\] )?(.*\.\w+):(\d+)(?::([\w \-]+))?: (warning:|)(.+)/
 	let diagnostics: Diagnostic[] = []
 
     // Split into lines
@@ -145,67 +145,6 @@ async function validateDocument(uri: string): Promise<void> {
 
 // Don't suggest any completion items
 connection.onCompletion(() => []);
-
-/*
-connection.onDidChangeWatchedFiles((change) => {
-	// Monitored files have change in VSCode
-	connection.console.log('We received an file change event');
-});
-
-// This handler provides the initial list of the completion items.
-connection.onCompletion((textDocumentPosition: TextDocumentPositionParams): CompletionItem[] => {
-	// The pass parameter contains the position of the text document in which code complete got
-	// requested. For the example we ignore this info and always provide the same completion items.
-	return [
-		{
-			label: 'TypeScript',
-			kind: CompletionItemKind.Text,
-			data: 1
-		},
-		{
-			label: 'JavaScript',
-			kind: CompletionItemKind.Text,
-			data: 2
-		}
-	]
-});
-*/
-
-/*
-// This handler resolve additional information for the item selected in the completion list.
-connection.onCompletionResolve((item: CompletionItem): CompletionItem => {
-	if (item.data === 1) {
-		item.detail = 'TypeScript details',
-		item.documentation = 'TypeScript documentation'
-	} else if (item.data === 2) {
-		item.detail = 'JavaScript details',
-		item.documentation = 'JavaScript documentation'
-	}
-	return item;
-});
-*/
-
-// connection.onDidOpenTextDocument((params) => {
-// 	// A text document got opened in VSCode.
-// 	// params.textDocument.uri uniquely identifies the document. For documents store on disk this is a file URI.
-// 	// params.textDocument.text the initial full content of the document.
-// 	documents.add(params.textDocument.uri);
-// 	validateDocument(params.textDocument.uri);
-// });
-
-// connection.onDidChangeTextDocument((params) => {
-// 	// The content of a text document did change in VSCode.
-// 	// params.textDocument.uri uniquely identifies the document.
-// 	// params.contentChanges describe the content changes to the document.
-// 	validateDocument(params.textDocument.uri);
-// });
-
-// connection.onDidCloseTextDocument((params) => {
-// 	// A text document got closed in VSCode.
-// 	// params.textDocument.uri uniquely identifies the document.
-// 	documents.delete(params.textDocument.uri);
-// 	connection.sendDiagnostics({ uri: params.textDocument.uri, diagnostics: [] });
-// });
 
 documents.onDidOpen((event) => {
 	validateDocument(event.document.uri);
